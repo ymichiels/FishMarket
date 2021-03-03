@@ -7,6 +7,8 @@ import com.jfoenix.controls.*;
 import com.jfoenix.svg.SVGGlyph;
 
 import fr.univpau.agents.BuyerAgent;
+import fr.univpau.containers.BuyerContainer;
+import fr.univpau.containers.IController;
 import fr.univpau.utils.Bid;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,7 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.stage.Window;
 
-public class BuyerController {
+public class BuyerController implements IController<BuyerContainer> {
 
     @FXML
     private JFXButton buttonSubscribeBuyer;
@@ -52,6 +54,7 @@ public class BuyerController {
     
     private BuyerAgent _buyer;
 	private static ObservableList<TreeItem<Bid>> subscribedEncheres;
+    private BuyerContainer container;
 
     public void initialize() {
     	initButtonTitle();
@@ -150,5 +153,11 @@ public class BuyerController {
     
     public void setLabelTitleSection(String label) {
     	labelTitleSection.setText(label);
+    }
+
+    @Override
+    public void setContainer(BuyerContainer container) {
+        this.container = container;
+        System.out.println(container);
     }
 }

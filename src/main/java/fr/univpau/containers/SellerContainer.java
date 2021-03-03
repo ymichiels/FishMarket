@@ -53,6 +53,7 @@ public class SellerContainer extends Application {
         
         Parent root = (Parent)fxmlLoader.load();
         MainController controller = (MainController) fxmlLoader.getController();
+        controller.setContainer(this);
         
         controller.changeContent(locationSeller);
         

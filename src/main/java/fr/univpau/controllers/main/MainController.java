@@ -1,6 +1,7 @@
 package fr.univpau.controllers.main;
 
 import com.jfoenix.controls.*;
+import fr.univpau.containers.IController;
 import javafx.animation.Transition;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -23,6 +24,8 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class MainController {
+    private IController subController;
+    private Object container;
 
     @FXML    
     private StackPane root;
@@ -86,6 +89,13 @@ public class MainController {
         
     }
 
+    public void setContainer(Object obj) {
+        this.container = obj;
+        if(this.subController != null) {
+            this.subController.setContainer(obj);
+        }
+    }
+
     public static final class InputController {
         @FXML
         private JFXListView<?> toolbarPopupList;
@@ -108,7 +118,15 @@ public class MainController {
     
     public void changeContent(URL url) throws IOException {
     	drawer.getChildren().clear();
-    	drawer.getChildren().add(FXMLLoader.load(url));
+    	FXMLLoader loader = new FXMLLoader(url);
+    	drawer.getChildren().add(loader.load());
+    	Object controller = loader.getController();
+    	if(controller instanceof IController) {
+    	    subController = (IController) controller;
+    	    if(this.container != null) {
+    	        subController.setContainer(this.container);
+            }
+        }
     }
     
     public JFXHamburger getHamburgerSideMenu() {

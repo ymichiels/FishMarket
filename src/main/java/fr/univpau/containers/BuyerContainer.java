@@ -28,7 +28,7 @@ public class BuyerContainer extends Application {
     
     public void start(Stage primaryStage) throws Exception {
     	startContainer();
-    	/*new Thread(() -> {
+    	new Thread(() -> {
             try {
                 SVGGlyphLoader.loadGlyphsFont(MarketContainer.class.getResourceAsStream("/svg/icomoon.svg"),
                         "icomoon.svg");
@@ -46,6 +46,7 @@ public class BuyerContainer extends Application {
         // gui.setContainer(this);
         MainController controller = (MainController)fxmlLoader.getController();
         controller.changeContent(locationBuyer);
+        controller.setContainer(this);
         
         double width = 600;
         double height = 600;
@@ -58,9 +59,9 @@ public class BuyerContainer extends Application {
         primaryStage.setTitle("Buyer");
         primaryStage.centerOnScreen();
         primaryStage.setScene(scene);
-        primaryStage.show();*/
+        primaryStage.show();
     	
-    	BuyerInterface.start(primaryStage);
+    	//BuyerInterface.start(primaryStage);
     }
     
     public void startContainer() {

@@ -10,6 +10,8 @@ import com.jfoenix.controls.*;
 import com.jfoenix.svg.SVGGlyph;
 
 import fr.univpau.agents.SellerAgent;
+import fr.univpau.containers.BuyerContainer;
+import fr.univpau.containers.IController;
 import fr.univpau.containers.SellerContainer;
 import fr.univpau.controllers.components.bar.TitleSectionBarController;
 import fr.univpau.controllers.main.MainController;
@@ -30,12 +32,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Window;
 import javafx.util.Duration;
 
-public class SellerController {
+public class SellerController implements IController<SellerContainer> {
 	private String name;
 	private SellerAgent agent;
 	private SellerContainer container;
 	private ObservableList<JFXButton> observableListbuttons;
-	
+
 	@FXML    
     private StackPane root;
     @FXML    
@@ -163,6 +165,12 @@ public class SellerController {
         JFXTooltip.setVisibleDuration(Duration.millis(3000));
         JFXTooltip.install(hamburgerSideMenuContainer, burgerTooltip, Pos.BOTTOM_CENTER);
         
+    }
+
+    @Override
+    public void setContainer(SellerContainer container) {
+        this.container = container;
+        System.out.println(container);
     }
 
     public static final class InputController {
