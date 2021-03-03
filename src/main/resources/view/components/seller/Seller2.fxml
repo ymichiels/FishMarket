@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="fr.univpau.controllers.components.seller.SellerController">
+    <BorderPane>
+        <top>
+            <VBox spacing="20">
+                <JFXToolbar>
+                    <leftItems>
+                        <JFXRippler maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
+                            <StackPane fx:id="hamburgerSideMenuContainer">
+                                <JFXHamburger fx:id="hamburgerSideMenu">
+                                    <HamburgerBackArrowBasicTransition/>
+                                </JFXHamburger>
+                            </StackPane>
+                        </JFXRippler>
+                        <Label fx:id="labelTitleApp" text="Projet SMA">
+                        </Label>
+                    </leftItems>
+                    <rightItems>
+                        <JFXRippler fx:id="optionsRippler" maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
+                            <StackPane fx:id="optionsBurger">
+                                <JFXHamburger fx:id="hamburgerOption" styleClass="jfx-options-burger">
+                                </JFXHamburger>
+                            </StackPane>
+                        </JFXRippler>
+                    </rightItems>
+                </JFXToolbar>
+            </VBox>
+        </top>
+
+        <center>
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="250" direction="LEFT">
+                <StackPane fx:id="rootSeller">
+				    <children>
+				        <BorderPane>
+				        	<top>
+					            <StackPane BorderPane.alignment="CENTER">
+					               <children>
+					                  <HBox alignment="TOP_RIGHT">
+					                     <children>
+					                        <JFXButton fx:id="buttonPopupInfoSection" />
+					                     </children>
+					                  </HBox>
+					                  <VBox alignment="CENTER">
+					                     <children>
+					                        <HBox>
+					                           <children>
+					                              <JFXButton fx:id="buttonBack" />
+					                           </children>
+					                        </HBox>
+					                        <HBox>
+					                           <children>
+					                              <Label fx:id="labelTitleSection" style="-fx-font-size: 40;" text="Titre">
+					                                 <HBox.margin>
+					                                    <Insets bottom="60.0" left="80.0" />
+					                                 </HBox.margin>
+					                              </Label>
+					                           </children>
+					                        </HBox>
+					                     </children>
+					                  </VBox>
+					               </children>
+					            </StackPane>
+					         </top>
+				            <center>
+				                <StackPane>
+				                    <children>
+				                        <VBox fx:id="ToolActionBar" alignment="TOP_CENTER" minWidth="200.0" spacing="40.0">
+				                            <children>
+				                                <JFXTextField fx:id="textFieldFishName" cache="true" labelFloat="true" promptText="Nom du poisson">
+				                                </JFXTextField>
+				                                <JFXTextField fx:id="textFieldTimestamp" cache="true" labelFloat="true" promptText="Temps d'attente d'une offre">
+				                                </JFXTextField>
+				                                <JFXTextField fx:id="textFieldInitialPrice" cache="true" labelFloat="true" promptText="Prix initial">
+				                                </JFXTextField>
+				                                <JFXTextField fx:id="textFieldStep" cache="true" labelFloat="true" promptText="Variation du prix">
+				                                </JFXTextField>
+				                            </children>
+				                            <Separator />
+				                            <HBox alignment="CENTER" spacing="40.0">
+									            <children>
+									                <JFXButton fx:id="buttonCancelSeller" mnemonicParsing="false" prefWidth="200.0" styleClass="btn-danger"
+									                           text="Annuler"/>
+									                <JFXButton fx:id="buttonSaveSeller" mnemonicParsing="false" prefWidth="200.0" styleClass="btn-success"
+									                           text="Valider"/>
+									            </children>
+									        </HBox>
+				                        </VBox>
+				                    </children>
+				                </StackPane>
+				            </center>
+				        </BorderPane>
+				    </children>
+				</StackPane>
+            </JFXDrawer>
+        </center>
+    </BorderPane>
+</StackPane>

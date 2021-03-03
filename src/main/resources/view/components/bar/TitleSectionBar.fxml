@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="titleActionBar" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx" fx:controller="fr.univpau.controllers.components.bar.ToolActionBarController">
+    <JFXScrollPane fx:id="scrollHeader">
+        <topBar>
+            <children>
+                <JFXButton fx:id="buttonBack">
+                    <StackPane.alignment>CENTER_LEFT</StackPane.alignment>
+                    <StackPane.margin>
+                        <Insets>
+                            <left>
+                                20
+                            </left>
+                        </Insets>
+                    </StackPane.margin>
+                </JFXButton>
+                <JFXButton fx:id="buttonPopupInfoSection">
+                    <StackPane.alignment>CENTER_RIGHT</StackPane.alignment>
+                    <StackPane.margin>
+                        <Insets>
+                            <right>
+                                20
+                            </right>
+                        </Insets>
+                    </StackPane.margin>
+                </JFXButton>
+            </children>
+        </topBar>
+        <bottomBar>
+            <children>
+                <Label fx:id="labelTitleSection" style="-fx-text-fill:WHITE; -fx-font-size: 40;">
+                    Titre
+                    <StackPane.alignment>CENTER_LEFT</StackPane.alignment>
+                    <StackPane.margin>
+                        <Insets>
+                            <left>
+                                80
+                            </left>
+                        </Insets>
+                    </StackPane.margin>
+                </Label>
+            </children>
+        </bottomBar>
+    </JFXScrollPane>
+</StackPane>

@@ -1,0 +1,12 @@
+# Project exclude paths
+/out/
+/bin/
+/lib/
+/target/
+/.idea/
+/APDescription.txt
+/MTPs-Main-Container.txt
+/Projet-FSMA-FishMarket.iml
+/Projet-FSMA-FishMarket.eml
+/Projet-FSMA-FishMarket.userlibraries
+

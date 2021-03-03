@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="fr.univpau.controllers.components.buyer.BuyerController">
+    <BorderPane>
+        <top>
+            <VBox spacing="20">
+                <JFXToolbar>
+                    <leftItems>
+                        <JFXRippler maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
+                            <StackPane fx:id="hamburgerSideMenuContainer">
+                                <JFXHamburger fx:id="hamburgerSideMenu">
+                                    <HamburgerBackArrowBasicTransition/>
+                                </JFXHamburger>
+                            </StackPane>
+                        </JFXRippler>
+                        <Label fx:id="labelTitleApp" text="Projet SMA">
+                        </Label>
+                    </leftItems>
+                    <rightItems>
+                        <JFXRippler fx:id="optionsRippler" maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
+                            <StackPane fx:id="optionsBurger">
+                                <JFXHamburger fx:id="hamburgerOption" styleClass="jfx-options-burger">
+                                </JFXHamburger>
+                            </StackPane>
+                        </JFXRippler>
+                    </rightItems>
+                </JFXToolbar>
+            </VBox>
+        </top>
+
+        <center>
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="250" direction="LEFT">
+                <StackPane fx:id="rootBuyer">
+				    <children>
+				        <BorderPane>
+				        <top>
+				            <StackPane BorderPane.alignment="CENTER">
+				               <children>
+				                  <HBox alignment="TOP_RIGHT">
+				                     <children>
+				                        <JFXButton fx:id="buttonPopupInfoSection"/>
+				                     </children>
+				                  </HBox>
+				                  <VBox alignment="CENTER">
+				                     <children>
+				                        <HBox>
+				                           <children>
+				                              <JFXButton fx:id="buttonBack" />
+				                           </children>
+				                        </HBox>
+				                        <HBox>
+				                           <children>
+				                              <Label fx:id="labelTitleSection" style="-fx-font-size: 40;" text="Titre">
+				                                 <HBox.margin>
+				                                    <Insets bottom="60.0" left="80.0" />
+				                                 </HBox.margin>
+				                              </Label>
+				                           </children>
+				                        </HBox>
+				                     </children>
+				                  </VBox>
+				               </children>
+				            </StackPane>
+				         </top>
+				         <center>
+				            <StackPane BorderPane.alignment="CENTER">
+				                <children>
+				                    <VBox spacing="20.0">
+				                        <children>
+				                            <HBox alignment="CENTER_LEFT" spacing="20.0">
+				                                <children>
+				                                    <Label text="Année" />
+				                                    <JFXComboBox fx:id="comboBoxBid" minWidth="200.0" />
+				                                    <Separator orientation="VERTICAL">
+				                                        <padding>
+				                                            <Insets left="20.0" right="20.0" />
+				                                        </padding>
+				                                    </Separator>
+				                                    <Label fx:id="treeTableViewCountBid" minWidth="60.0" styleClass="title-label" />
+				                                    <Label styleClass="title-label" />
+				                                    <StackPane>
+				                                        <children>
+				                                            <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT">
+				                                                <children>
+				                                                    <JFXTextField fx:id="searchFieldBid" labelFloat="true" promptText="Rechercher une enchère..." />
+				                                                </children>
+				                                            </StackPane>
+				                                        </children>
+				                                    </StackPane>
+				                                </children>
+				                            </HBox>
+				                            <Separator />
+				                            <Label text="Sélectionner les enchères auxquelles s'abonner" />
+				                            <JFXTreeTableView fx:id="treeTableViewMarket">
+				                                <columns>
+				                                    <JFXTreeTableColumn fx:id="column1SellerName" prefWidth="200.0" resizable="true" text="Vendeur" />
+				                                    <JFXTreeTableColumn fx:id="column2FishName" prefWidth="200.0" resizable="true" text="Nom du poisson" />
+				                                    <JFXTreeTableColumn fx:id="column3BuyerName" minWidth="20.0" resizable="true" text="Acheteur" />
+				                                    <JFXTreeTableColumn fx:id="column4Price" minWidth="20.0" resizable="true" text="Prix Actuel €" />
+				                                    <JFXTreeTableColumn fx:id="column5IsFinished" minWidth="20.0" resizable="true" text="Terminé" />
+				                                </columns>
+				                            </JFXTreeTableView>
+				                            <Separator />
+				                            <HBox alignment="CENTER" spacing="40.0">
+									            <children>
+									                <JFXButton fx:id="buttonCancelBuyer" onAction="#handleButtonCancel" mnemonicParsing="false" prefWidth="200.0" styleClass="btn-danger"
+									                           text="Annuler"/>
+									                <JFXButton fx:id="buttonSubscribeBuyer" onAction="#handleButtonSubscribe" mnemonicParsing="false" prefWidth="200.0" styleClass="btn-success"
+									                           text="Valider"/>
+									            </children>
+									        </HBox>
+				                        </children>
+				                    </VBox>
+				                </children>
+				            </StackPane>
+				         </center>
+				        </BorderPane>
+				    </children>
+				</StackPane>
+            </JFXDrawer>
+        </center>
+    </BorderPane>
+</StackPane>

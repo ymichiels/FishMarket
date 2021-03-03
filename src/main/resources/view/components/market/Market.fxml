@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="rootMarket" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univpau.controllers.components.market.MarketController">
+    <children>
+        <BorderPane>
+        	<top>
+	            <StackPane BorderPane.alignment="CENTER">
+	               <children>
+	                  <VBox alignment="CENTER">
+	                     <children>
+	                        <HBox>
+	                           <children>
+	                              <Label fx:id="labelTitleSection" style="-fx-font-size: 40;" text="Titre">
+	                                 <HBox.margin>
+	                                    <Insets bottom="60.0" left="80.0" />
+	                                 </HBox.margin>
+	                              </Label>
+	                           </children>
+	                        </HBox>
+	                     </children>
+	                  </VBox>
+	               </children>
+	            </StackPane>
+	         </top>
+	         <center>
+	            <StackPane BorderPane.alignment="CENTER">
+	                <children>
+	                    <VBox spacing="20.0">
+	                        <children>
+	                            <HBox alignment="CENTER_LEFT" spacing="20.0">
+	                                <children>
+	                                    <Label text="Année" />
+	                                    <JFXComboBox fx:id="comboBoxBid" minWidth="200.0" />
+	                                    <Separator orientation="VERTICAL">
+	                                        <padding>
+	                                            <Insets left="20.0" right="20.0" />
+	                                        </padding>
+	                                    </Separator>
+	                                    <Label fx:id="treeTableViewCountBid" minWidth="60.0" styleClass="title-label" />
+	                                    <Label styleClass="title-label" />
+	                                    <StackPane>
+	                                        <children>
+	                                            <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT">
+	                                                <children>
+	                                                    <JFXTextField fx:id="searchFieldBid" labelFloat="true" promptText="Rechercher une enchère..." />
+	                                                </children>
+	                                            </StackPane>
+	                                        </children>
+	                                    </StackPane>
+	                                </children>
+	                            </HBox>
+	                            <Separator />
+	                            <JFXTreeTableView fx:id="treeTableViewMarket">
+	                                <columns>
+	                                    <JFXTreeTableColumn fx:id="column1Seller" prefWidth="200.0" resizable="true" text="Vendeur" />
+	                                    <JFXTreeTableColumn fx:id="column2FishName" prefWidth="200.0" resizable="true" text="Nom du poisson" />
+	                                    <JFXTreeTableColumn fx:id="column3Buyer" minWidth="20.0" resizable="true" text="Acheteur" />
+	                                    <JFXTreeTableColumn fx:id="column4CurrentPrice" minWidth="20.0" resizable="true" text="Prix Actuel €" />
+	                                    <JFXTreeTableColumn fx:id="column6Done" minWidth="20.0" resizable="true" text="Terminé" />
+	                                </columns>
+	                            </JFXTreeTableView>
+                        <Separator />
+                        <JFXTextField alignment="CENTER" promptText="Budget" />
+                        <HBox alignment="TOP_CENTER">
+                           <children>
+                              <JFXCheckBox />
+                              <JFXCheckBox />
+                           </children>
+                        </HBox>
+	                        </children>
+	                    </VBox>
+	                </children>
+	            </StackPane>
+	         </center>
+        </BorderPane>
+    </children>
+</StackPane>

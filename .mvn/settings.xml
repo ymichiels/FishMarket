@@ -1,0 +1,62 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+  <localRepository>${user.home}/.m2/repository</localRepository>
+  <interactiveMode>true</interactiveMode>
+  <offline>false</offline>
+ 
+  <profiles>
+    <profile>
+      <id>compiler-jdk8-win</id>
+        <properties>
+          <JAVA_1_8_HOME_WINDOWS>C:\Program Files\Java\jdk1.8.0_261</JAVA_1_8_HOME_WINDOWS>
+        </properties>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <jdk>1.8</jdk>
+        <os>
+          <name>windows 10</name>
+          <family>windows</family>
+          <arch>amd64</arch>
+          <version>10.0</version>
+        </os>
+        <property>
+          <name>sparrow-type</name>
+          <value>France</value>
+        </property>
+        <file>
+          <exists>${basedir}/JAVA_1_8_HOME_WINDOWS.properties</exists>
+        </file>
+      </activation>
+    </profile>
+    <profile>
+      <id>compiler-jdk15-win</id>
+        <properties>
+          <JAVA_15_HOME_WINDOWS>C:\Program Files\Java\jdk-15.0.1</JAVA_15_HOME_WINDOWS>
+          <JAVA_1_8_HOME_LINUX>/</JAVA_1_8_HOME_LINUX>
+          <JAVA_15_HOME_LINUX>/</JAVA_15_HOME_LINUX>
+        </properties>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <jdk>15</jdk>
+        <os>
+          <name>windows 10</name>
+          <family>windows</family>
+          <arch>amd64</arch>
+          <version>10.0</version>
+        </os>
+        <property>
+          <name>sparrow-type</name>
+          <value>France</value>
+        </property>
+        <file>
+          <exists>${basedir}/JAVA_15_HOME_WINDOWS.properties</exists>
+        </file>
+      </activation>
+    </profile>
+  </profiles>
+ 
+  <activeProfiles>
+    <activeProfile>compiler-jdk8-win</activeProfile>
+    <activeProfile>compiler-jdk15-win</activeProfile>
+  </activeProfiles>
+</settings>

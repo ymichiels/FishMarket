@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<StackPane fx:id="titleActionBar" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx">
+    <JFXScrollPane fx:id="scrollHeaderMin" prefHeight="64">
+        <bottomBar>
+            <children>
+                <Label fx:id="labelTitleSection" styleClass="h1-label" style="-fx-text-fill:WHITE">
+                    Titre
+                    <StackPane.alignment>CENTER_LEFT</StackPane.alignment>
+                    <StackPane.margin>
+                        <Insets>
+                            <left>
+                                80
+                            </left>
+                        </Insets>
+                    </StackPane.margin>
+                </Label>
+                <JFXButton fx:id="buttonPopupInfoSection2">
+                    <StackPane.alignment>CENTER_RIGHT</StackPane.alignment>
+                    <StackPane.margin>
+                        <Insets>
+                            <right>
+                                20
+                            </right>
+                        </Insets>
+                    </StackPane.margin>
+                </JFXButton>
+            </children>
+        </bottomBar>
+    </JFXScrollPane>
+</StackPane>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<StackPane fx:id="toolActionBar" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univpau.controllers.components.bar.ToolActionBarController">
+    <children>
+        <HBox spacing="40.0">
+            <children>
+                <JFXButton fx:id="buttonCancel" mnemonicParsing="false" prefWidth="200.0" styleClass="btn-danger"
+                           text="Annuler"/>
+                <JFXButton fx:id="buttonSave" mnemonicParsing="false" prefWidth="200.0" styleClass="btn-success"
+                           text="Valider"/>
+            </children>
+        </HBox>
+    </children>
+</StackPane>
