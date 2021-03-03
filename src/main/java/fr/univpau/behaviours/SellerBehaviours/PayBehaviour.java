@@ -1,14 +1,14 @@
 package fr.univpau.behaviours.SellerBehaviours;
 
+import fr.univpau.utils.Performatives;
+import fr.univpau.utils.Steps;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
-import fr.univpau.utils.Performatives;
-import fr.univpau.utils.Steps;
 
 public class PayBehaviour extends Behaviour {
-    private MainBehaviour mb;
-    private int step = Steps.STEP_WAIT_THUNE;
+    private final MainBehaviour mb;
+    private final int step = Steps.STEP_WAIT_THUNE;
     private boolean isFinished = false;
 
     public PayBehaviour(MainBehaviour mb) {
@@ -17,15 +17,15 @@ public class PayBehaviour extends Behaviour {
 
     @Override
     public void action() {
-        switch(step){
+        switch (step) {
             case Steps.STEP_WAIT_THUNE:
                 MessageTemplate messageTemplate = MessageTemplate.and(MessageTemplate.MatchPerformative(Performatives.TO_PAY),
-                                                                      MessageTemplate.MatchInReplyTo(mb.getBid().getFishName()));
+                        MessageTemplate.MatchInReplyTo(mb.getBid().getFishName()));
                 ACLMessage msg = mb.getAgent().receive(messageTemplate);
-                if (msg != null){
+                if (msg != null) {
                     //mb.getAgent().changeStatus(mb.getEnchere(), Steps.STEP_PAY);
                     isFinished = true;
-                }else{
+                } else {
                     block();
                 }
                 break;
@@ -40,7 +40,7 @@ public class PayBehaviour extends Behaviour {
     }
 
     @Override
-    public int onEnd(){
+    public int onEnd() {
         return super.onEnd();
     }
 }

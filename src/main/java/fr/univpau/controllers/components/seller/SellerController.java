@@ -1,46 +1,35 @@
 package fr.univpau.controllers.components.seller;
 
-import java.awt.BorderLayout;
-import java.io.IOException;
-import java.net.URL;
-
-import javax.sound.midi.ControllerEventListener;
-
 import com.jfoenix.controls.*;
 import com.jfoenix.svg.SVGGlyph;
-
 import fr.univpau.agents.SellerAgent;
-import fr.univpau.containers.BuyerContainer;
 import fr.univpau.containers.IController;
 import fr.univpau.containers.SellerContainer;
-import fr.univpau.controllers.components.bar.TitleSectionBarController;
-import fr.univpau.controllers.main.MainController;
-import fr.univpau.controllers.main.MainController.InputController;
 import jade.gui.GuiEvent;
 import javafx.animation.Transition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Window;
 import javafx.util.Duration;
 
-public class SellerController implements IController<SellerContainer> {
-	private String name;
-	private SellerAgent agent;
-	private SellerContainer container;
-	private ObservableList<JFXButton> observableListbuttons;
+import java.io.IOException;
 
-	@FXML    
+public class SellerController implements IController<SellerContainer> {
+    private String name;
+    private SellerAgent agent;
+    private SellerContainer container;
+    private ObservableList<JFXButton> observableListbuttons;
+
+    @FXML
     private StackPane root;
-    @FXML    
+    @FXML
     private StackPane hamburgerSideMenuContainer;
     @FXML
     private JFXHamburger hamburgerSideMenu;
@@ -52,7 +41,7 @@ public class SellerController implements IController<SellerContainer> {
     private JFXDrawer drawer;
     @FXML
     private JFXPopup toolbarPopup;
-	@FXML
+    @FXML
     private JFXButton buttonBack;
     @FXML
     private Label labelTitleSection;
@@ -63,7 +52,7 @@ public class SellerController implements IController<SellerContainer> {
     @FXML
     private JFXButton buttonPopupInfoSection;
     @FXML
-    private JFXButton buttonSaveSeller;
+    private JFXButton buttonSaleSeller;
     @FXML
     private JFXTextField textFieldTimestamp;
     @FXML
@@ -72,13 +61,13 @@ public class SellerController implements IController<SellerContainer> {
     private JFXTextField textFieldStep;
     @FXML
     private JFXTextField textFieldFishName;
-    
+
     public void initialize() throws IOException {
-    	// initMain();
-    	initButtonTitle();
-    	this.setLabelTitleSection("Vente de poisson");
+        // initMain();
+        initButtonTitle();
+        this.setLabelTitleSection("Vente de poisson");
     }
-    
+
     public JFXButton getBackButton() {
         return buttonBack;
     }
@@ -102,28 +91,30 @@ public class SellerController implements IController<SellerContainer> {
         buttonPopupInfoSection.setGraphic(help);
         buttonPopupInfoSection.setRipplerFill(Color.WHITE);
     }
-    
+
     public void setLabelTitleSection(String label) {
-    	labelTitleSection.setText(label);
+        labelTitleSection.setText(label);
     }
-    
+
     public SellerController getController() {
-    	return this.getController();
+        return this.getController();
     }
-    
-    public void createEnchere() {
-    	GuiEvent event = new GuiEvent((Object) this, 1);
-    	Integer delay = new Integer(textFieldTimestamp.getText());
-    	delay *= 1000;
-    	event.addParameter((Object) new Integer(textFieldInitialPrice.getText()));
-    	event.addParameter((Object) delay);
-    	event.addParameter((Object) new Integer(textFieldStep.getText()));
-    	event.addParameter((Object) textFieldFishName.getText());
-    	container.getAgent().postGuiEvent(event);
+
+    @FXML
+    private void handleButtonSale(ActionEvent event) {
+        SellerAgent sellerAgent = container.getAgent();
+        GuiEvent guiEvent = new GuiEvent(this, 1);
+        Integer delay = new Integer(textFieldTimestamp.getText());
+        delay *= 1000;
+        guiEvent.addParameter(new Integer(textFieldInitialPrice.getText()));
+        guiEvent.addParameter(delay);
+        guiEvent.addParameter(new Integer(textFieldStep.getText()));
+        guiEvent.addParameter(textFieldFishName.getText());
+        sellerAgent.postGuiEvent(guiEvent);
     }
-    
+
     public void initMain() {
-    	observableListbuttons = FXCollections.observableArrayList();
+        observableListbuttons = FXCollections.observableArrayList();
 
         // init the title hamburger icon
         final JFXTooltip burgerTooltip = new JFXTooltip("Ouvrir le menu latéral");
@@ -164,7 +155,7 @@ public class SellerController implements IController<SellerContainer> {
                         15));
         JFXTooltip.setVisibleDuration(Duration.millis(3000));
         JFXTooltip.install(hamburgerSideMenuContainer, burgerTooltip, Pos.BOTTOM_CENTER);
-        
+
     }
 
     @Override
@@ -186,9 +177,9 @@ public class SellerController implements IController<SellerContainer> {
             }
         }
     }
-    
+
     public JFXHamburger getHamburgerSideMenu() {
         return hamburgerSideMenu;
     }
-    
+
 }

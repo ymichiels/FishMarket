@@ -2,7 +2,6 @@ package fr.univpau.agents;
 
 import fr.univpau.behaviours.MarketBehaviours.MarketBehaviour;
 import fr.univpau.containers.MarketContainer;
-import fr.univpau.gui.MarketInterface;
 import fr.univpau.utils.Bid;
 import fr.univpau.utils.MessageSender;
 import fr.univpau.utils.Performatives;
@@ -28,7 +27,7 @@ public class MarketAgent extends GuiAgent {
         vendeurs = new ArrayList<>();
         acheteurs = new ArrayList<>();
         encheres = new ArrayList<>();
-        gui = (MarketContainer)getArguments()[0];
+        gui = (MarketContainer) getArguments()[0];
         gui.setAgent(this);
         if (!getLocalName().equals(NAME)) {
             System.out.println("Le marché doit se nommer: " + NAME);
@@ -46,23 +45,23 @@ public class MarketAgent extends GuiAgent {
     @Override
     protected void beforeMove() {
         try {
-			System.out.println("Avant migration du container " + getAID().getName() + 
-					" vers " + this.getContainerController().getContainerName());
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+            System.out.println("Avant migration du container " + getAID().getName() +
+                    " vers " + this.getContainerController().getContainerName());
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void afterMove() {
-    	try {
-			System.out.println("Après migration du container " + getAID().getName() + 
-					" vers " + this.getContainerController().getContainerName());
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+        try {
+            System.out.println("Après migration du container " + getAID().getName() +
+                    " vers " + this.getContainerController().getContainerName());
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
     }
 
     public void addSeller(String name) {

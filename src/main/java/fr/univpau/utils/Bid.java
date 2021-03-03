@@ -1,15 +1,9 @@
 package fr.univpau.utils;
 
-import java.io.Serializable;
-
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.property.*;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import java.io.Serializable;
 
 //classe enchère, contient toutes les informations nécessaires à transmettre sur le réseau d'main.java.univpau.agents (nom du vendeur, price etc etc)
 public class Bid extends RecursiveTreeObject<Bid> implements Serializable {
@@ -21,31 +15,31 @@ public class Bid extends RecursiveTreeObject<Bid> implements Serializable {
     public StringProperty buyerName;
     public BooleanProperty isFinished;
 
-    public Bid(String vendeur, String produit, int price, int delai, int step) {
+    public Bid(String sellerName, String produit, int price, int waitingTime, int step) {
         this.price = new SimpleIntegerProperty(price);
-        this.waitingTime = new SimpleIntegerProperty(delai);
+        this.waitingTime = new SimpleIntegerProperty(waitingTime);
         this.step = new SimpleIntegerProperty(step);
         this.fishName = new SimpleStringProperty(produit);
-        this.sellerName = new SimpleStringProperty(vendeur);
+        this.sellerName = new SimpleStringProperty(sellerName);
         isFinished = new SimpleBooleanProperty(false);
     }
 
     public int getPrice() {
         return price.get();
     }
-    
+
     public SimpleIntegerProperty getPriceProperty() {
         return price;
     }
 
     public void setPrice(int price) {
-        this.price.set(price);;
+        this.price.set(price);
     }
 
     public int getWaitingTime() {
         return waitingTime.get();
     }
-    
+
     public SimpleIntegerProperty getWaitingTimeProperty() {
         return waitingTime;
     }
@@ -61,9 +55,9 @@ public class Bid extends RecursiveTreeObject<Bid> implements Serializable {
     public SimpleIntegerProperty getStepProperty() {
         return step;
     }
-    
+
     public void setStep(int step) {
-        this.step.set(step);;
+        this.step.set(step);
     }
 
     public String getSellerName() {
@@ -73,7 +67,7 @@ public class Bid extends RecursiveTreeObject<Bid> implements Serializable {
     public StringProperty getSellerNameProperty() {
         return sellerName;
     }
-    
+
     public void setSellerName(String sellerName) {
         this.sellerName.set(sellerName);
     }
@@ -81,13 +75,13 @@ public class Bid extends RecursiveTreeObject<Bid> implements Serializable {
     public String getFishName() {
         return fishName.get();
     }
-    
+
     public StringProperty getFishNameProperty() {
         return fishName;
     }
 
     public void setFishName(String fishName) {
-        this.fishName.set(fishName);;
+        this.fishName.set(fishName);
     }
 
     public String getBuyerName() {
@@ -99,13 +93,13 @@ public class Bid extends RecursiveTreeObject<Bid> implements Serializable {
     }
 
     public void setBuyerName(String buyerName) {
-        this.buyerName.set(buyerName);;
+        this.buyerName.set(buyerName);
     }
 
     public boolean isFinished() {
         return isFinished.get();
     }
-    
+
     public BooleanProperty isFinishedProperty() {
         return isFinished;
     }

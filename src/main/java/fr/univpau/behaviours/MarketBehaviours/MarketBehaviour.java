@@ -26,12 +26,12 @@ public class MarketBehaviour extends CyclicBehaviour {
             switch (msg.getPerformative()) {
                 case Performatives.TO_REGISTER:
                     switch (msg.getContent()) {
-                        case RegisterBehaviour.VENDEUR :
-                        	ctx.addBuyer(msg.getSender().getLocalName());
-                        	break;
-                        case RegisterBehaviour.ACHETEUR :
-                        	ctx.addSeller(msg.getSender().getLocalName());
-                        	break;
+                        case RegisterBehaviour.VENDEUR:
+                            ctx.addBuyer(msg.getSender().getLocalName());
+                            break;
+                        case RegisterBehaviour.ACHETEUR:
+                            ctx.addSeller(msg.getSender().getLocalName());
+                            break;
                     }
                     break;
 

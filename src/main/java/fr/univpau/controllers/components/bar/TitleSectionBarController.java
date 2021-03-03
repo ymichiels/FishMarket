@@ -53,8 +53,8 @@ public class TitleSectionBarController {
         buttonPopupInfoSection.setGraphic(help);
         buttonPopupInfoSection.setRipplerFill(Color.WHITE);
     }
-    
+
     public void setLabelTitleSection(String label) {
-    	labelTitleSection.setText(label);
+        labelTitleSection.setText(label);
     }
 }

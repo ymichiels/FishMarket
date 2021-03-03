@@ -1,18 +1,18 @@
 package fr.univpau.behaviours.SellerBehaviours;
 
 import fr.univpau.agents.SellerAgent;
-import jade.core.behaviours.FSMBehaviour;
 import fr.univpau.utils.Bid;
 import fr.univpau.utils.Performatives;
+import jade.core.behaviours.FSMBehaviour;
 
 public class MainBehaviour extends FSMBehaviour {
-    private Bid e;
-    private SellerAgent sellerAgent;
+    private final Bid e;
+    private final SellerAgent sellerAgent;
 
-    public  MainBehaviour(SellerAgent sellerAgent, Bid enchere){
+    public MainBehaviour(SellerAgent sellerAgent, Bid enchere) {
         super(sellerAgent);
         this.sellerAgent = sellerAgent;
-        this.e =enchere;
+        this.e = enchere;
 
         //definition des etats
         registerFirstState(new AnnounceBehaviour(this), "to_announce");
@@ -24,7 +24,7 @@ public class MainBehaviour extends FSMBehaviour {
 
         //définition des transitions
         registerDefaultTransition("to_announce", "to_announce");
-        registerTransition("to_announce","to_announce", Performatives.TO_ANNOUNCE);
+        registerTransition("to_announce", "to_announce", Performatives.TO_ANNOUNCE);
         registerTransition("to_announce", "to_bid_once", Performatives.TO_BID);
         registerTransition("to_bid_once", "to_bid_several", Performatives.TO_BID);
         registerTransition("to_bid_several", "to_bid_several", Performatives.TO_BID);
@@ -38,8 +38,8 @@ public class MainBehaviour extends FSMBehaviour {
     @Override
     public int onEnd() {
         return super.onEnd();
-	}
-    
+    }
+
     public Bid getBid() {
         return e;
     }

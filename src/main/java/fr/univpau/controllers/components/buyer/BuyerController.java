@@ -1,29 +1,24 @@
 package fr.univpau.controllers.components.buyer;
 
-import java.io.IOException;
-import java.util.function.Function;
-
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTreeTableColumn;
+import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.svg.SVGGlyph;
-
 import fr.univpau.agents.BuyerAgent;
 import fr.univpau.containers.BuyerContainer;
 import fr.univpau.containers.IController;
 import fr.univpau.utils.Bid;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
-import javafx.stage.Window;
+
+import java.util.function.Function;
 
 public class BuyerController implements IController<BuyerContainer> {
 
@@ -37,8 +32,8 @@ public class BuyerController implements IController<BuyerContainer> {
     private JFXButton buttonPopupInfoSection;
     @FXML
     private JFXButton buttonBack;
-    
-  //TableView1
+
+    //TableView1
     @FXML
     private JFXTreeTableView<Bid> treeTableViewBuyer;
     @FXML
@@ -51,14 +46,14 @@ public class BuyerController implements IController<BuyerContainer> {
     private JFXTreeTableColumn<Bid, Integer> column4Price;
     @FXML
     private JFXTreeTableColumn<Bid, Boolean> column5IsFinished;
-    
+
     private BuyerAgent _buyer;
-	private static ObservableList<TreeItem<Bid>> subscribedEncheres;
+    private static ObservableList<TreeItem<Bid>> subscribedEncheres;
     private BuyerContainer container;
 
     public void initialize() {
-    	initButtonTitle();
-    	this.setLabelTitleSection("Achat de poisson");
+        initButtonTitle();
+        this.setLabelTitleSection("Achat de poisson");
     }
 
     protected void initButtonTitle() {
@@ -80,7 +75,7 @@ public class BuyerController implements IController<BuyerContainer> {
         buttonPopupInfoSection.setGraphic(help);
         buttonPopupInfoSection.setRipplerFill(Color.WHITE);
     }
-    
+
     private <T> void setupCellValueFactory(JFXTreeTableColumn<Bid, T> column, Function<Bid, ObservableValue<T>> mapper) {
         column.setCellValueFactory((TreeTableColumn.CellDataFeatures<Bid, T> param) -> {
             if (column.validateValue(param)) {
@@ -90,14 +85,14 @@ public class BuyerController implements IController<BuyerContainer> {
             }
         });
     }
-    
+
     private void setupEditableTableViewBid() {
         setupCellValueFactory(column1SellerName, b -> b.sellerName);
         setupCellValueFactory(column2FishName, b -> b.fishName);
         setupCellValueFactory(column3BuyerName, b -> b.buyerName);
         setupCellValueFactory(column4Price, b -> b.price.asObject());
         setupCellValueFactory(column5IsFinished, b -> b.isFinished.asObject());
-        
+
         column1SellerName.setOnEditCommit((TreeTableColumn.CellEditEvent<Bid, String> t) -> {
             t.getTreeTableView()
                     .getTreeItem(t.getTreeTablePosition()
@@ -129,30 +124,30 @@ public class BuyerController implements IController<BuyerContainer> {
                     .getValue().setIsFinished(t.getNewValue());
         });
     }
-    
+
     @FXML
     private void handleButtonSubscribe(ActionEvent event) {
-    	subscribedEncheres = treeTableViewBuyer.getSelectionModel().getSelectedItems();
-    	
-    	treeTableViewBuyer.getSelectionModel().getSelectedItems().clear();
-    	// vBox.getChildren().remove(subscribe);
-    	
-    	treeTableViewBuyer.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    	treeTableViewBuyer.getSelectionModel().getSelectedItems().addAll(subscribedEncheres);
+        subscribedEncheres = treeTableViewBuyer.getSelectionModel().getSelectedItems();
+
+        treeTableViewBuyer.getSelectionModel().getSelectedItems().clear();
+        // vBox.getChildren().remove(subscribe);
+
+        treeTableViewBuyer.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        treeTableViewBuyer.getSelectionModel().getSelectedItems().addAll(subscribedEncheres);
         System.out.println("You clicked me!");
     }
-    
+
     @FXML
     private void handleButtonCancel(ActionEvent event) {
         System.out.println("You clicked me!");
     }
-    
+
     protected void setupNonEditableObjects() {
-    	treeTableViewBuyer.setEditable(false);
+        treeTableViewBuyer.setEditable(false);
     }
-    
+
     public void setLabelTitleSection(String label) {
-    	labelTitleSection.setText(label);
+        labelTitleSection.setText(label);
     }
 
     @Override

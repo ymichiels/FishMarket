@@ -1,16 +1,18 @@
 package fr.univpau.behaviours.SellerBehaviours;
 
 import fr.univpau.agents.MarketAgent;
-import jade.core.behaviours.OneShotBehaviour;
 import fr.univpau.utils.MessageSender;
 import fr.univpau.utils.Performatives;
+import jade.core.behaviours.OneShotBehaviour;
 
 public class AttributeBehaviour extends OneShotBehaviour {
 
-    private MainBehaviour mb;
-    public AttributeBehaviour(MainBehaviour mb){
+    private final MainBehaviour mb;
+
+    public AttributeBehaviour(MainBehaviour mb) {
         this.mb = mb;
     }
+
     @Override
     public void action() {
         //mb.getAgent().changeStatus(mb.getEnchere(), Steps.STEP_ATTRIBUTE);
@@ -18,7 +20,7 @@ public class AttributeBehaviour extends OneShotBehaviour {
     }
 
     @Override
-    public int onEnd(){
+    public int onEnd() {
         return Performatives.TO_GIVE;
     }
 }

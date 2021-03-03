@@ -3,7 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<StackPane fx:id="toolActionBar" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univpau.controllers.components.bar.ToolActionBarController">
+<StackPane fx:id="toolActionBar" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="fr.univpau.controllers.components.bar.ToolActionBarController">
     <children>
         <HBox spacing="40.0">
             <children>

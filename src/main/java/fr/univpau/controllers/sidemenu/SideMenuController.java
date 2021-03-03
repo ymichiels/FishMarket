@@ -1,9 +1,7 @@
 package fr.univpau.controllers.sidemenu;
 
 import com.jfoenix.controls.JFXListView;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
@@ -22,7 +20,7 @@ public class SideMenuController {
         sideList.propagateMouseEventsToParent();
         sideList.getSelectionModel().selectedItemProperty().addListener((o, oldVal, newVal) -> {
         });
-       
+
     }
 
 }

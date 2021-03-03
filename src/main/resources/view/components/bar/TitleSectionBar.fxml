@@ -5,8 +5,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
-
-<StackPane fx:id="titleActionBar" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx" fx:controller="fr.univpau.controllers.components.bar.ToolActionBarController">
+<StackPane fx:id="titleActionBar" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx"
+           fx:controller="fr.univpau.controllers.components.bar.ToolActionBarController">
     <JFXScrollPane fx:id="scrollHeader">
         <topBar>
             <children>

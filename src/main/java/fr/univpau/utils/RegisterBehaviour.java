@@ -19,12 +19,12 @@ public class RegisterBehaviour extends OneShotBehaviour {
         ACLMessage msg = new ACLMessage(Performatives.TO_REGISTER);
         msg.addReceiver(new AID(ctx.getClass().getSimpleName(), AID.ISLOCALNAME));
         switch (ctx.getClass().getSimpleName()) {
-            case "BuyerAgent" :
-            	msg.setContent(ACHETEUR);
-            	break;
-            case "SellerAgent" :
-            	msg.setContent(VENDEUR);
-            	break;
+            case "BuyerAgent":
+                msg.setContent(ACHETEUR);
+                break;
+            case "SellerAgent":
+                msg.setContent(VENDEUR);
+                break;
         }
         ctx.send(msg);
     }

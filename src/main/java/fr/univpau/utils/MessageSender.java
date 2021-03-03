@@ -7,30 +7,29 @@ import jade.lang.acl.ACLMessage;
 
 import java.io.IOException;
 
-
 //comportement permettant d'envoyer un message sur le réseau
 public class MessageSender extends OneShotBehaviour {
     private final Agent snd;
-    private final String[] cibles;
+    private final String[] target;
     private final ACLMessage msg;
-    private final Bid e;
+    private final Bid bid;
 
 
     //constructeur basique avec un mssage vide
     public MessageSender(Agent sender, int performative, String[] destinataires) {
         snd = sender;
-        cibles = destinataires;
+        target = destinataires;
         msg = new ACLMessage(performative);
-        this.e = null;
+        this.bid = null;
     }
 
     //constructeur plus élaboré , permettant de transmettre un objet serialisable (j'ai mis une classe Enchere
     //pour le moment, mais ça peut changer, si on envoie juste des Integer par exemple
-    public MessageSender(Agent sender, int performative, String[] destinataires, Bid e) {
+    public MessageSender(Agent sender, int performative, String[] destinataires, Bid bid) {
         snd = sender;
-        cibles = destinataires;
+        target = destinataires;
         msg = new ACLMessage(performative);
-        this.e = e;
+        this.bid = bid;
     }
 
     public void setSender(String name) {
@@ -40,17 +39,16 @@ public class MessageSender extends OneShotBehaviour {
     //on envoie le message ici
     @Override
     public void action() {
-        for (String cible : cibles) {
-            msg.addReceiver(new AID(cible, AID.ISLOCALNAME));
+        for (String target : target) {
+            msg.addReceiver(new AID(target, AID.ISLOCALNAME));
         }
-        if (e != null) {
+        if (bid != null) {
             try {
-                msg.setContentObject(e);
+                msg.setContentObject(bid);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
         }
-
         snd.send(msg);
     }
 }
